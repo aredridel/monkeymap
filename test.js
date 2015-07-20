@@ -5,9 +5,7 @@ var test = require('tap').test;
 
 test('monkeymapping an Array', function (t) {
     t.plan(3);
-    monkeymap([1, 2, 3], function (e, next) {
-        next(null, e * 2);
-    }, function (err, arr) {
+    monkeymap([1, 2, 3], double, function (err, arr) {
         t.error(err);
         t.ok(Array.isArray(arr));
         t.deepEqual(arr, [2, 4, 6]);
@@ -17,9 +15,7 @@ test('monkeymapping an Array', function (t) {
 
 test('monkeymapping an Object', function (t) {
     t.plan(2);
-    monkeymap({ a: 1, b: 2, c: 3}, function (e, next) {
-        next(null, e * 2);
-    }, function (err, obj) {
+    monkeymap({ a: 1, b: 2, c: 3}, double, function (err, obj) {
         t.error(err);
         t.deepEqual(obj, {a: 2, b: 4, c: 6});
         t.end();
