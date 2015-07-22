@@ -22,6 +22,15 @@ test('monkeymapping an Object', function (t) {
     });
 });
 
+test('monkeymapping an Object with a key', function (t) {
+    t.plan(2);
+    monkeymap({ a: 1, b: 2, c: 3}, mergekey, function (err, obj) {
+        t.error(err);
+        t.deepEqual(obj, {a: "val = 1 key = a", b: "val = 2 key = b", c: "val = 3 key = c"});
+        t.end();
+    });
+});
+
 test('monkeymapping a scalar value', function (t) {
     t.plan(2);
     monkeymap(5, double, function (err, num) {
@@ -45,3 +54,6 @@ function double(val, next) {
     next(null, val * 2);
 }
 
+function mergekey(val, key, next) {
+    next(null, 'val = ' + val + ' key = ' + key);
+}

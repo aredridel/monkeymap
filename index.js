@@ -3,11 +3,13 @@
 var async = require('async');
 
 module.exports = function monkeymap(inp, it, cb) {
-    if (Array.isArray(inp)) {
-        async.map(inp, it, cb);
-    } else if (inp && typeof inp === 'object') {
-        async.reduce(Object.keys(inp), {}, function (obj, key, next) {
-            it(inp[key], function (err, val) {
+    if (it.length === 2) {
+        it = promote3(it);
+    }
+
+    if (inp && (Array.isArray(inp) || typeof inp === 'object')) {
+        async.reduce(Object.keys(inp), new inp.constructor(), function (obj, key, next) {
+            it(inp[key], key, function (err, val) {
                 if (err) {
                     next(err);
                 } else {
@@ -17,6 +19,12 @@ module.exports = function monkeymap(inp, it, cb) {
             });
         }, cb);
     } else {
-        async.ensureAsync(it)(inp, cb);
+        async.ensureAsync(it)(inp, null, cb);
     }
 };
+
+function promote3(it) {
+    return function (a, b, cb) {
+        it(a, cb);
+    };
+}
