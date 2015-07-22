@@ -3,7 +3,7 @@
 var async = require('async');
 
 module.exports = function monkeymap(inp, it, cb) {
-    if (it.length === 2) {
+    if (it.length < 3) {
         it = promote3(it);
     }
 
