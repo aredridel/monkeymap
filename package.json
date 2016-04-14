@@ -1,7 +1,7 @@
 {
   "name": "monkeymap",
   "version": "1.1.1",
-  "description": "",
+  "description": "Perform a map-like operation on any data type",
   "main": "index.js",
   "scripts": {
     "pretest": "eslint *.js",
