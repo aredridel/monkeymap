@@ -1,6 +1,6 @@
 {
   "name": "monkeymap",
-  "version": "1.1.3",
+  "version": "2.0.0",
   "description": "Perform a map-like operation on any data type",
   "main": "index.js",
   "scripts": {
