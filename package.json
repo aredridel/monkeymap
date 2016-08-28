@@ -26,6 +26,6 @@
     "tap": "^7.0.0"
   },
   "dependencies": {
-    "async": "^1.4.0"
+    "async": "^2.0.0"
   }
 }
