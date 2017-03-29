@@ -23,7 +23,7 @@
   "homepage": "https://github.com/aredridel/monkeymap#readme",
   "devDependencies": {
     "eslint": "^3.0.0",
-    "tap": "^9.0.3"
+    "tap": "^10.3.1"
   },
   "dependencies": {
     "async": "^2.1.1"
